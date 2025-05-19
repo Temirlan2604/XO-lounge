@@ -8,6 +8,10 @@ class Table(models.Model):
     is_cabin = models.BooleanField(default=False)
     capacity = models.PositiveIntegerField(default=4)
 
+    def __str__(self):
+        kind = 'Кабина' if self.is_cabin else 'Столик'
+        return f'{kind} №{self.number} (вместимость {self.capacity})'
+
 class Reservation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete=models.CASCADE)

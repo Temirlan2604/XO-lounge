@@ -12,10 +12,18 @@ def map_view(request):
 def booking_view(request, table_id):
     table = get_object_or_404(Table, id=table_id)
     if request.method == 'POST':
-        # пример простого бронирования на ближайший свободный час
-        start = timezone.now().replace(minute=0, second=0, microsecond=0) + timedelta(hours=1)
-        end = start + timedelta(hours=1)
-        Reservation.objects.create(user=request.user, table=table, start_time=start, end_time=end)
+        start = request.POST['start_time']
+        hours = int(request.POST['hours'])
+        # Преобразуем строку в datetime
+        from django.utils.dateparse import parse_datetime
+        start_dt = parse_datetime(start)
+        end_dt = start_dt + timedelta(hours=hours)
+        Reservation.objects.create(
+            user=request.user,
+            table=table,
+            start_time=start_dt,
+            end_time=end_dt
+        )
         return redirect('reservations:payment')
     return render(request, 'reservations/booking.html', {'table': table})
 

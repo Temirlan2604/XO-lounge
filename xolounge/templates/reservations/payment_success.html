@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 text-center">
+    <h2 class="mb-3">Спасибо за оплату!</h2>
+    <p>Ваша бронь подтверждена. С нетерпением ждём вас в XO-lounge.</p>
+    <a href="{% url 'orders:history' %}" class="btn btn-outline-primary mt-3">Перейти в историю заказов</a>
+  </div>
+</div>
+{% endblock %}

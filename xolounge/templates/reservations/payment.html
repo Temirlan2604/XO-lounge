@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2 class="mb-4">Оплата брони</h2>
+    <p>Сумма к оплате: <strong>1000 ₸</strong> <!-- здесь можно динамически подставлять цену --></p>
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="cardNumber" class="form-label">Номер карты</label>
+        <input type="text" class="form-control" id="cardNumber" name="card_number" placeholder="0000 0000 0000 0000" required>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="expDate" class="form-label">Срок действия</label>
+          <input type="text" class="form-control" id="expDate" name="expiry" placeholder="MM/YY" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="cvc" class="form-label">CVC</label>
+          <input type="text" class="form-control" id="cvc" name="cvc" placeholder="123" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Оплатить</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

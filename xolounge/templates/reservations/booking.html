@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2 class="mb-4">
+  {% if table.is_cabin %}Кабина{% else %}Столик{% endif %} №{{ table.number }}
+</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label">Дата и время начала брони</label>
+    <input type="datetime-local" name="start_time" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Продолжительность (час)</label>
+    <select name="hours" class="form-select">
+      {% for h in 1|make_list %}
+        <option value="{{ forloop.counter }}">{{ forloop.counter }} ч.</option>
+      {% endfor %}
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Забронировать</button>
+</form>
+{% endblock %}
