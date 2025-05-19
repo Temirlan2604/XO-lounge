@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>История заказов</h2>
+  <ul>
+    {% for r in reservations %}
+      <li>
+        <a href="{% url 'orders:detail' r.id %}">
+          Стол №{{ r.table.number }} — {{ r.start_time|date:"d.m.Y H:i" }}
+        </a>
+      </li>
+    {% empty %}
+        <li>Заказов нет.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

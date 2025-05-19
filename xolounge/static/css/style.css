@@ -1,0 +1,22 @@
+/* static/css/style.css */
+.navbar-custom {
+  background: linear-gradient(90deg, #343a40 0%, #565656 100%);
+}
+.navbar-custom .nav-link {
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+  transition: color .2s, transform .2s;
+}
+.navbar-custom .nav-link:hover {
+  color: #ffc107;
+  transform: translateY(-2px);
+}
+.navbar-custom .btn-outline-light {
+  border: 2px solid #ffc107;
+  color: #ffc107;
+  transition: background-color .2s, color .2s;
+}
+.navbar-custom .btn-outline-light:hover {
+  background-color: #ffc107;
+  color: #343a40;
+}

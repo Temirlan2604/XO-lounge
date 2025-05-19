@@ -1,0 +1,25 @@
+{# templates/main/index.html #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row align-items-center">
+  <div class="col-lg-6 mb-4">
+    <h1 class="display-5 fw-bold">Добро пожаловать в XO-lounge</h1>
+    <p class="lead">
+      Лучший караоке-бар в городе с уютными кабинками, огромным выбором песен и авторскими коктейлями.
+    </p>
+    <ul class="list-unstyled">
+      <li><strong>Адрес:</strong> ул. Пушкина, 10</li>
+      <li><strong>Телефон:</strong> +7 700 123-45-67</li>
+      <li><strong>Время работы:</strong> 12:00 – 03:00</li>
+    </ul>
+    <a href="{% url 'reservations:map' %}" class="btn btn-lg btn-primary mt-3">Забронировать столик</a>
+  </div>
+  <div class="col-lg-6">
+    <img src="{% static 'images/bar_photo.jpg' %}" 
+         class="img-fluid rounded shadow-sm" 
+         alt="XO-lounge">
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Детали заказа — стол №{{ reservation.table.number }}</h2>
+  <p>Время: {{ reservation.start_time|date:"d.m.Y H:i" }} — {{ reservation.end_time|date:"H:i" }}</p>
+  <h3>Блюда:</h3>
+  <ul>
+    {% for item in items %}
+      <li>{{ item.dish.name }} × {{ item.quantity }}</li>
+    {% empty %}
+      <li>Пока нет выбранных блюд.</li>
+    {% endfor %}
+  </ul>
+  <h3>Оставить отзыв</h3>
+  <form method="post" action="{% url 'orders:detail' reservation.id %}">
+    {% csrf_token %}
+    <label>Плюсы:<br><textarea name="pros"></textarea></label><br>
+    <label>Минусы:<br><textarea name="cons"></textarea></label><br>
+    <button type="submit">Отправить отзыв</button>
+  </form>
+{% endblock %}
